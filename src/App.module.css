@@ -1,4 +1,28 @@
-.grid{
-  display: grid;
-  grid-template-columns: auto auto auto;
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  gap:1rem;
 }
+
+.main{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap:1rem;
+  margin: 5%;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
