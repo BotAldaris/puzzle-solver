@@ -59,9 +59,7 @@ const App: Component = () => {
           style={{ "background-color": "#4CAF50" }}
           onclick={() => {
             setResolution(solve_bfs(number(), n(), correct_board)!);
-            alert(
-              "The puzzle was solved click on next to walktrouh the solution"
-            );
+            alert("The puzzle was solved click on next to walktrouh the solution");
           }}
         >
           Solve

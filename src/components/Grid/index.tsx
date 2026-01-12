@@ -11,9 +11,7 @@ const Grid: Component<{
       <For each={props.number}>
         {(numArr, i) => (
           <For each={numArr}>
-            {(num, j) => (
-              <Item num={num} func={() => props.try_move(i(), j())}></Item>
-            )}
+            {(num, j) => <Item num={num} func={() => props.try_move(i(), j())}></Item>}
           </For>
         )}
       </For>

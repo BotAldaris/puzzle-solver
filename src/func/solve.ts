@@ -3,7 +3,7 @@ import Trie from "./Trie";
 export function solve_bfs(nums: number[][], n: number, correct_board: number[][]) {
   const visited = new Trie();
   const path = new Map();
-  
+
   path.set(nums, "");
   const to_visit = [nums];
   while (to_visit.length != 0) {
@@ -152,12 +152,8 @@ export function move(nums_p: number[][], i: number, j: number, n: number) {
   let nums = nums_p.map((row) => row.slice());
   const zeroPosition = find_zero(nums, n);
   if (
-    (i - 1 <= zeroPosition[0] &&
-      i + 1 >= zeroPosition[0] &&
-      zeroPosition[1] == j) ||
-    (j - 1 <= zeroPosition[1] &&
-      j + 1 >= zeroPosition[1] &&
-      zeroPosition[0] == i)
+    (i - 1 <= zeroPosition[0] && i + 1 >= zeroPosition[0] && zeroPosition[1] == j) ||
+    (j - 1 <= zeroPosition[1] && j + 1 >= zeroPosition[1] && zeroPosition[0] == i)
   ) {
     const last_num = nums[i][j];
     nums[i][j] = 0;
