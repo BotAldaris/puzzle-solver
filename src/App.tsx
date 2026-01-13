@@ -1,15 +1,26 @@
-import { createSignal, type Component, For } from "solid-js";
+import { createSignal, type Component, For, onMount } from "solid-js";
 import styles from "./App.module.css";
 import { check_win, createCorrectBoard, move, solve_bfs } from "./func/solve";
 import { generatePuzzle } from "./func/solvable";
 import Grid from "./components/Grid";
-
+//653172840
 const App: Component = () => {
-  const [n, setN] = createSignal(3);
-  const num_begin = generatePuzzle(n());
+  onMount(async () => {
+    async function loadGoWasm() {
+      const go = new window.Go();
+      const wasm = await WebAssembly.instantiateStreaming(fetch("/main.wasm"), go.importObject);
+      go.run(wasm.instance);
+      console.time("hi")
+      // const  result = JSON.parse(window.solveBFS(num_begin)) as number[][][]
+      console.timeEnd("hi")
+    }
+    loadGoWasm();
+  });
+  const [n, setN] = createSignal(4);
+  const num_begin = generatePuzzle(n())
   const correct_board = createCorrectBoard(n());
-  const [resolution, setResolution] = createSignal([] as number[][][]);
   const [number, setNumbers] = createSignal(num_begin);
+  const [resolution, setResolution] = createSignal([]  as  number[][][]);
   let i = 1;
 
   function modifyNumber() {

@@ -3,8 +3,8 @@ import Trie from "./Trie";
 export function solve_bfs(nums: number[][], n: number, correct_board: number[][]) {
   const visited = new Trie();
   const path = new Map();
-
-  path.set(nums, "");
+  console.time('hi')
+  path.set(nums, ""); 
   const to_visit = [nums];
   while (to_visit.length != 0) {
     const current = to_visit.pop();
@@ -21,6 +21,7 @@ export function solve_bfs(nums: number[][], n: number, correct_board: number[][]
           res_path.push(curr);
           curr = path.get(curr);
         }
+        console.timeEnd("hi")
         return res_path.reverse();
       }
       if (visited.exists(move)) {
