@@ -29,6 +29,7 @@ func Solve_bfs(nums [Size][Size]int8) [][Size][Size]int8 {
 		for _, v := range moves {
 			if v == correctBoard {
 				var result [][Size][Size]int8
+				result = append(result, correctBoard)
 				for {
 					result = append(result, current.data)
 					if current.parent == nil {
@@ -50,7 +51,7 @@ func Solve_bfs(nums [Size][Size]int8) [][Size][Size]int8 {
 
 func createCorrectBoard() [Size][Size]int8 {
 	var nums [Size][Size]int8
-	for index := 0; index < Size*Size-1; index++ {
+	for index := range Size*Size-1 {
 		nums[index/Size][index%Size] = int8(index + 1)
 	}
 
@@ -65,8 +66,8 @@ func createCorrectBoard() [Size][Size]int8 {
 
 // findZero finds the position of 0 in the matrix
 func findZero(nums [Size][Size]int8) (int8, int8) {
-	for i := 0; i < Size; i++ {
-		for j := 0; j < Size; j++ {
+	for i := range Size {
+		for j := range Size {
 			if nums[i][j] == 0 {
 				return int8(i), int8(j)
 			}

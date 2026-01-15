@@ -2,6 +2,7 @@
   "name": "vite-template-solid",
   "version": "0.0.0",
   "description": "",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "start": "vite",
@@ -12,16 +13,15 @@
     "lint:fix": "oxlint --fix",
     "serve": "vite preview"
   },
-  "license": "MIT",
+  "dependencies": {
+    "solid-js": "^1.9.9"
+  },
   "devDependencies": {
+    "oxfmt": "^0.24.0",
+    "oxlint": "^1.39.0",
     "solid-devtools": "^0.34.3",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "vite-plugin-solid": "^2.11.10"
-  },
-  "dependencies": {
-    "oxfmt": "^0.24.0",
-    "oxlint": "^1.39.0",
-    "solid-js": "^1.9.9"
   }
 }

@@ -1,15 +1,14 @@
-
-.buttons{
+.buttons {
   display: flex;
   justify-content: center;
-  gap:1rem;
+  gap: 1rem;
 }
 
-.main{
+.main {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap:1rem;
+  gap: 1rem;
   margin: 5%;
 }
 
@@ -25,4 +24,3 @@
   cursor: pointer;
   border-radius: 8px;
 }
-

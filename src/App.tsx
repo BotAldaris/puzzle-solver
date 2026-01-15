@@ -1,26 +1,23 @@
-import { createSignal, type Component, For, onMount } from "solid-js";
+import { createSignal, type Component, onMount } from "solid-js";
 import styles from "./App.module.css";
-import { check_win, createCorrectBoard, move, solve_bfs } from "./func/solve";
+import { check_win, createCorrectBoard, move } from "./func/solve";
 import { generatePuzzle } from "./func/solvable";
 import Grid from "./components/Grid";
-//653172840
+
 const App: Component = () => {
   onMount(async () => {
     async function loadGoWasm() {
       const go = new window.Go();
       const wasm = await WebAssembly.instantiateStreaming(fetch("/main.wasm"), go.importObject);
       go.run(wasm.instance);
-      console.time("hi")
-      // const  result = JSON.parse(window.solveBFS(num_begin)) as number[][][]
-      console.timeEnd("hi")
     }
     loadGoWasm();
   });
   const [n, setN] = createSignal(4);
-  const num_begin = generatePuzzle(n())
+  const num_begin = generatePuzzle(n());
   const correct_board = createCorrectBoard(n());
   const [number, setNumbers] = createSignal(num_begin);
-  const [resolution, setResolution] = createSignal([]  as  number[][][]);
+  const [resolution, setResolution] = createSignal([] as number[][][]);
   let i = 1;
 
   function modifyNumber() {
@@ -34,7 +31,7 @@ const App: Component = () => {
   }
 
   function try_move(i: number, j: number) {
-    const next_number = move(number(), i, j, 3);
+    const next_number = move(number(), i, j, n());
     if (next_number) {
       setNumbers(next_number);
       if (check_win(next_number, correct_board)) {
@@ -69,7 +66,7 @@ const App: Component = () => {
           class={styles.button}
           style={{ "background-color": "#4CAF50" }}
           onclick={() => {
-            setResolution(solve_bfs(number(), n(), correct_board)!);
+            setResolution(JSON.parse(window.solveBFS(number())).reverse());
             alert("The puzzle was solved click on next to walktrouh the solution");
           }}
         >

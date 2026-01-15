@@ -1,7 +1,7 @@
-.grid{
-    width: 5rem;
-    height: 5rem;
-    border:  3px solid red;
-    display: grid;
-    place-items: center;
+.grid {
+  width: 5rem;
+  height: 5rem;
+  border: 3px solid red;
+  display: grid;
+  place-items: center;
 }
